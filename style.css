@@ -1,0 +1,243 @@
+/* Configuración Base */
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Courier New", Courier, monospace; /* Tipografía técnica */
+  margin: 0;
+  height: 100vh;
+  overflow: hidden; /* Evita el scroll por ahora */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: none;
+}
+
+/* Líneas de Retícula Sugiura */
+.grid-line {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 0;
+}
+.line-v {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+}
+.line-h {
+  height: 1px;
+  width: 100%;
+  top: 50%;
+}
+
+/* Estilo de los Ejes del Menú */
+.nav-axis {
+  position: fixed;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 20px;
+  z-index: 10;
+  cursor: pointer;
+  transition: color 0.3s;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.nav-axis:hover {
+  color: #888888;
+}
+
+.axis-n {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.axis-s {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.axis-e {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+.axis-w {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+.axis-origami {
+  bottom: 20px;
+  right: 20px;
+  border: 1px solid white;
+  padding: 10px;
+}
+
+/* Contenido Central */
+.central-mandala {
+  text-align: center;
+  z-index: 5;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+.subtitle {
+  font-size: 0.7rem;
+  color: #666;
+}
+
+/* Decoración Circular Central */
+.circle-decoration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Tipografía de Coordenadas */
+.coordinates {
+  font-size: 8px;
+  color: #444;
+  margin-top: 20px;
+  letter-spacing: 3px;
+}
+
+/* Efecto de Hover para los Ejes (Sutil) */
+.nav-axis:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Vista de Constelación */
+.constellation-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow-y: auto; /* Permite scroll si hay muchas piezas */
+}
+
+.origami-piece {
+  display: flex;
+  align-items: center; /* Centra la imagen verticalmente respecto al texto */
+  gap: 40px; /* Más espacio entre foto y texto */
+  width: 850px; /* Aumentamos el ancho total del bloque */
+  max-width: 90vw; /* Para que no se salga en pantallas pequeñas */
+}
+
+.piece-image img {
+  width: 280px; /* Imagen un poco más grande para balancear */
+  height: auto;
+  filter: grayscale(100%) contrast(110%);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde casi invisible */
+}
+
+.piece-image img:hover {
+  filter: grayscale(0%); /* Revela color al pasar el mouse */
+}
+
+.piece-context {
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  padding-left: 30px;
+  text-align: justify; /* Estética de libro técnico */
+}
+
+.piece-context h3 {
+  font-size: 18px;
+  letter-spacing: 5px;
+  margin: 10px 0 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: inline-block;
+}
+
+.piece-context p {
+  font-size: 14px; /* Texto un poco más pequeño para legibilidad */
+  line-height: 1.6; /* Más espacio entre líneas */
+  color: #cccccc;
+  max-width: 450px; /* Evita que las líneas de texto sean demasiado largas */
+  text-transform: none;
+}
+
+.tech-id,
+.tech-data {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #666666;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Línea que conecta visualmente (opcional) */
+.connecting-line {
+  width: 50px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  left: -50px;
+  top: 50%;
+}
+
+/* Definición del movimiento de revelado */
+@keyframes sugiuraFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Aplicación a los elementos de la pieza */
+.origami-piece {
+  animation: sugiuraFadeIn 1.5s ease-out forwards;
+}
+
+/* Retraso opcional para que el texto aparezca después que la imagen */
+.piece-context {
+  animation: sugiuraFadeIn 2s ease-out 0.5s both;
+}
+/* Ocultar el checkbox */
+.zoom-input {
+  display: none;
+}
+
+/* Estilo de la imagen clickable */
+.zoomable-img {
+  cursor: zoom-in;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Cuando el checkbox está activo (clic en la imagen) */
+.zoom-input:checked + label .zoomable-img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2.5); /* Ajusta el scale según prefieras */
+  z-index: 1000;
+  cursor: zoom-out;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+}
+
+/* Añadir un fondo oscuro cuando se amplía */
+.zoom-input:checked + label::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+}
