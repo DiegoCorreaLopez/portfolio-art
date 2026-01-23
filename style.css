@@ -46,37 +46,13 @@ body {
   color: #888888;
 }
 
-.axis-n {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.axis-s {
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.axis-e {
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-}
-.axis-w {
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-}
-.axis-origami {
-  bottom: 20px;
-  right: 20px;
-  border: 1px solid white;
-  padding: 10px;
-}
-
 /* Contenido Central */
 .central-mandala {
   text-align: center;
   z-index: 5;
+  position: relative;
+  /* Subimos el bloque central un poco respecto al eje horizontal */
+  transform: translateY(-10px);
 }
 
 h1 {
@@ -104,10 +80,13 @@ h1 {
 
 /* Tipografía de Coordenadas */
 .coordinates {
-  font-size: 8px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
   color: #444;
-  margin-top: 20px;
-  letter-spacing: 3px;
+  margin-top: 20px; /* Esto crea el espacio justo DEBAJO del título */
+  pointer-events: none;
+  display: block; /* Asegura que ocupe su propia línea */
 }
 
 /* Efecto de Hover para los Ejes (Sutil) */
@@ -455,4 +434,141 @@ h1 {
 .selector-return:hover span {
   color: #fff;
   letter-spacing: 6px;
+}
+
+/* AGREGAR AL FINAL DE STYLE.CSS */
+
+/* --- POSICIONAMIENTO DE EJES (STYLE.CSS) --- */
+
+/* Centros de los bordes */
+.axis-n {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.axis-s {
+  position: fixed;
+  bottom: 30px;
+  left: 20%;
+  transform: translateX(-70%);
+}
+
+/* Laterales rotados para estética técnica */
+.axis-w {
+  position: fixed;
+  left: 150px;
+  top: 80%;
+  transform: translateY(-10%) rotate(-90deg);
+  transform-origin: left center;
+}
+.axis-e {
+  position: fixed;
+  right: 150px;
+  top: 80%;
+  transform: translateY(-10%) rotate(90deg);
+  transform-origin: right center;
+}
+
+/* Esquinas Superiores */
+.axis-nw {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+}
+.axis-ne {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+}
+
+/* Esquina Inferior para Cine */
+.axis-se {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.axis-updates {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+/* Estilo común para que los nuevos ejes se vean como los anteriores */
+.nav-axis {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.nav-axis:hover {
+  color: #fff;
+  letter-spacing: 5px;
+}
+
+/* Agrega esto a tu style.css para darle un toque "radar" */
+#lat-val,
+#long-val {
+  color: #888; /* Un gris más claro que el resto para indicar que son valores vivos */
+  transition: color 0.2s ease;
+}
+
+.coordinates:hover #lat-val,
+.coordinates:hover #long-val {
+  color: #fff;
+}
+
+/* --- SECCIÓN ABOUT (ESTRUCTURA TÉCNICA) --- */
+
+.about-container {
+  max-width: 650px;
+  margin: 150px auto; /* Lo baja para que no choque con el botón de retorno */
+  padding: 0 40px;
+  text-align: left;
+}
+
+.profile-header h1 {
+  font-size: 26px;
+  letter-spacing: 6px;
+  margin: 20px 0;
+  color: #fff;
+  font-weight: lighter;
+}
+
+.profile-bio {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #888;
+  margin-bottom: 60px;
+  text-align: justify;
+}
+
+.contact-item {
+  margin-bottom: 20px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+}
+
+.contact-item .label {
+  color: #444;
+  margin-right: 20px;
+}
+
+.contact-item a {
+  color: #888;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #fff;
+  border-bottom: 1px solid #fff;
 }

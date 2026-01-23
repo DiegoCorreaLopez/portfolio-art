@@ -10,24 +10,90 @@
     <div class="grid-line line-v"></div>
     <div class="grid-line line-h"></div>
 
-    <nav class="nav-axis axis-n">[ 01 ] VISUAL_AXIS / FOTOGRAFÍA</nav>
-    <nav class="nav-axis axis-e">[ 02 ] SONIC_RESONANCE / MÚSICA</nav>
-    <nav class="nav-axis axis-s">[ 03 ] CINEMATIC_FLOW / CINE</nav>
-    <nav class="nav-axis axis-w">[ 04 ] TEXTUAL_MAPS / LITERATURA</nav>
+    <!-- 1ra sección  -->
     <nav
-      class="nav-axis axis-origami"
+      class="nav-axis axis-n"
       onclick="window.location.href = 'origami.html'"
     >
-      [ 05 ] GEOMETRIC_FOLDING / ORIGAMI
+      [ 01 ] GEOMETRIC_FOLDING / ORIGAMI
+    </nav>
+    <!-- 2da sección  -->
+    <nav
+      class="nav-axis axis-s"
+      onclick="window.location.href = 'fotografia.html'"
+    >
+      [ 02 ] VISUAL_AXIS / FOTOGRAFÍA
+    </nav>
+    <!-- 3ra sección  -->
+    <nav class="nav-axis axis-e" onclick="window.location.href = 'musica.html'">
+      [ 03 ] SONIC_RESONANCE / MÚSICA
+    </nav>
+    <!-- 4ta sección  -->
+    <nav
+      class="nav-axis axis-w"
+      onclick="window.location.href = 'literatura.html'"
+    >
+      [ 04 ] TEXTUAL_MAPS / LITERATURA
+    </nav>
+    <!-- 5ta sección  -->
+    <nav class="nav-axis axis-se" onclick="window.location.href = 'cine.html'">
+      [ 05 ] CINEMATIC_FLOW / CINE
+    </nav>
+    <!-- 6ta sección  -->
+    <nav class="nav-axis axis-nw" onclick="window.location.href = 'about.html'">
+      [ 06 ] ABOUT_ME / CONTACT
+    </nav>
+    <!-- 7ma sección  -->
+    <nav
+      class="nav-axis axis-ne"
+      onclick="window.location.href = 'thoughts.html'"
+    >
+      [ 07 ] RANDOM_THOUGHTS // ARCHIVE
+    </nav>
+    <!-- 8va sección  -->
+    <nav
+      class="nav-axis axis-updates"
+      onclick="window.location.href = 'updates.html'"
+    >
+      [ 08 ] SYSTEM_LOG // UPDATES
     </nav>
 
     <main class="central-mandala">
       <div class="circle-decoration"></div>
       <div class="info-block">
-        <h1>TU NOMBRE</h1>
-        <p class="subtitle">SUMMA COSMOGRAPHICA PERSONALIS</p>
-        <p class="coordinates">LAT: 4.7110° N / LONG: 74.0721° W</p>
+        <h1>Diego López</h1>
+        <p class="subtitle">SUMMA IMAGINARIA</p>
+        <div class="coordinates">
+          LAT: <span id="lat-val">4.7110</span>° N / LONG:
+          <span id="long-val">74.0721</span>° W
+        </div>
       </div>
     </main>
+
+    <script>
+      window.onload = function () {
+        const latSpan = document.getElementById("lat-val");
+        const longSpan = document.getElementById("long-val");
+
+        // Verificamos en la consola si el script encontró los elementos
+        if (latSpan && longSpan) {
+          console.log("Sistema de coordenadas activado.");
+
+          document.addEventListener("mousemove", (e) => {
+            const xPercent = e.clientX / window.innerWidth;
+            const yPercent = e.clientY / window.innerHeight;
+
+            // Mapeo de precisión
+            const dynamicLat = (4.711 + (yPercent - 0.5) * 0.005).toFixed(4);
+            const dynamicLong = (74.0721 + (xPercent - 0.5) * 0.005).toFixed(4);
+
+            latSpan.innerHTML = dynamicLat;
+            longSpan.innerHTML = dynamicLong;
+          });
+        } else {
+          console.error("No se encontraron los IDs lat-val o long-val.");
+        }
+      };
+    </script>
   </body>
 </html>
