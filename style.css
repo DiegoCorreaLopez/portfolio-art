@@ -132,39 +132,6 @@ h1 {
   max-width: 90vw; /* Para que no se salga en pantallas pequeñas */
 }
 
-.piece-image img {
-  width: 280px; /* Imagen un poco más grande para balancear */
-  height: auto;
-  filter: grayscale(100%) contrast(110%);
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde casi invisible */
-}
-
-.piece-image img:hover {
-  filter: grayscale(0%); /* Revela color al pasar el mouse */
-}
-
-.piece-context {
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  padding-left: 30px;
-  text-align: justify; /* Estética de libro técnico */
-}
-
-.piece-context h3 {
-  font-size: 18px;
-  letter-spacing: 5px;
-  margin: 10px 0 20px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  display: inline-block;
-}
-
-.piece-context p {
-  font-size: 14px; /* Texto un poco más pequeño para legibilidad */
-  line-height: 1.6; /* Más espacio entre líneas */
-  color: #cccccc;
-  max-width: 450px; /* Evita que las líneas de texto sean demasiado largas */
-  text-transform: none;
-}
-
 .tech-id,
 .tech-data {
   font-family: "Courier New", Courier, monospace;
@@ -199,11 +166,6 @@ h1 {
   }
 }
 
-/* Aplicación a los elementos de la pieza */
-.origami-piece {
-  animation: sugiuraFadeIn 1.5s ease-out forwards;
-}
-
 /* Retraso opcional para que el texto aparezca después que la imagen */
 .piece-context {
   animation: sugiuraFadeIn 2s ease-out 0.5s both;
@@ -219,25 +181,252 @@ h1 {
   transition: all 0.5s ease-in-out;
 }
 
-/* Cuando el checkbox está activo (clic en la imagen) */
-.zoom-input:checked + label .zoomable-img {
+/* Estilo para Diseños Propios (Línea blanca sólida) */
+.own-design .piece-context {
+  border-left: 2px solid #ffffff;
+}
+
+/* Estilo para Plegados/Obras ajenas (Línea gris punteada) */
+.other-fold .piece-context {
+  border-left: 1px dashed #666666;
+}
+
+/* El Nodo en estado de reposo */
+.origami-node {
+  position: absolute;
+  z-index: 10;
+}
+
+.node-switch {
+  display: none;
+}
+
+.preview-img {
+  width: 120px; /* Más pequeño para que quepan muchos en la constelación */
+  filter: grayscale(100%);
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.node-title h3 {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* El Contenido Oculto */
+.node-full-content {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(2.5); /* Ajusta el scale según prefieras */
-  z-index: 1000;
-  cursor: zoom-out;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 400px;
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 30px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2000;
 }
 
-/* Añadir un fondo oscuro cuando se amplía */
-.zoom-input:checked + label::before {
-  content: "";
+/* Mostrar cuando el switch está activo */
+.node-switch:checked ~ .node-full-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Estilo del texto dentro del expandido */
+.content-wrapper p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #ddd;
+  text-transform: none; /* Manteniendo tu preferencia de minúsculas */
+}
+
+.close-node {
+  display: block;
+  margin-top: 20px;
+  font-size: 9px;
+  color: #ff4444;
+  cursor: pointer;
+  text-align: right;
+}
+
+/* --- CONFIGURACIÓN DE LOS NODOS (PREVIEWS) --- */
+
+.origami-node {
+  position: absolute; /* Permite ubicar cada pieza en el mapa */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+/* El interruptor invisible que controla la expansión */
+.node-switch {
+  display: none;
+}
+
+/* La imagen en estado de vista previa (Pequeña y elegante) */
+.preview-img {
+  width: 160px; /* Ajusta este valor para el tamaño del preview */
+  height: auto;
+  filter: grayscale(100%) contrast(110%);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.preview-img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Títulos debajo de la miniatura */
+.node-title {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.node-title h3 {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #888;
+  margin: 5px 0;
+  text-transform: uppercase; /* Solo los títulos en mayúscula si lo deseas */
+}
+
+/* --- VENTANA DE INFORMACIÓN COMPLETA (MODAL) --- */
+
+.node-full-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 450px;
+  max-width: 85vw;
+  background: #000000;
+  border: 1px solid #ffffff;
+  padding: 40px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 9999;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 1);
+}
+
+/* Cuando haces clic en la imagen (activas el switch) */
+.node-switch:checked ~ .node-full-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Estilo del texto expandido */
+.content-wrapper p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #cccccc;
+  text-align: justify;
+}
+
+.close-node {
+  display: block;
+  margin-top: 25px;
+  font-size: 10px;
+  color: #666;
+  cursor: pointer;
+  text-align: right;
+  letter-spacing: 2px;
+}
+
+.close-node:hover {
+  color: #fff;
+}
+
+/* Pantalla de Selección */
+.selector-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 999;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #000;
+  z-index: 500;
+}
+
+.selector-option {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.selector-option h2 {
+  font-size: 18px;
+  letter-spacing: 5px;
+  color: #fff;
+}
+
+.selector-option:hover {
+  transform: scale(1.1);
+}
+
+.selector-line {
+  width: 1px;
+  height: 60vh;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Botón de regreso interno */
+.back-nav {
+  position: fixed;
+  top: 60px;
+  left: 20px;
+  font-size: 9px;
+  color: #444;
+  cursor: pointer;
+  z-index: 1000;
+}
+.back-nav:hover {
+  color: #fff;
+}
+
+.origami-node:has(.node-switch:checked) {
+  z-index: 10000; /* El nodo abierto salta al frente de todos los demás */
+}
+
+/* SOLUCIÓN AL PROBLEMA 1: Que nada se vea encima de la información */
+.node-full-content {
+  z-index: 9999; /* Esto lo pone por encima de todo */
+  width: 500px; /* Un poco más ancho para que la foto se vea bien */
+  max-height: 85vh; /* Evita que el cuadro sea más alto que la pantalla */
+  overflow-y: auto; /* Si el texto es muy largo, permite bajar con scroll */
+}
+
+/* SOLUCIÓN AL PROBLEMA 2: Estilo para la imagen ampliada */
+.expanded-img {
+  width: 100%; /* Ocupa todo el ancho del cuadro negro */
+  height: auto; /* Mantiene la proporción */
+  margin-bottom: 20px;
+  filter: grayscale(
+    0%
+  ); /* Aquí puedes decidir si verla a color (0%) o B/N (100%) */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 20px;
+}
+
+/* Diferenciación visual para My Folds */
+.other-fold .node-full-content {
+  border: 1px dashed #666666; /* Línea punteada gris en lugar de blanca sólida */
+}
+
+.other-fold .tech-id {
+  color: #4a9eff; /* Un toque de azul técnico muy sutil si quieres diferenciar más */
 }
