@@ -430,3 +430,29 @@ h1 {
 .other-fold .tech-id {
   color: #4a9eff; /* Un toque de azul técnico muy sutil si quieres diferenciar más */
 }
+
+/* AGREGAR AL FINAL DE STYLE.CSS */
+
+.selector-return {
+  position: absolute;
+  bottom: 8%; /* Lo ubica cerca del borde inferior */
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+  width: 250px;
+}
+
+.selector-return span {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #555;
+  display: block;
+}
+
+.selector-return:hover span {
+  color: #fff;
+  letter-spacing: 6px;
+}

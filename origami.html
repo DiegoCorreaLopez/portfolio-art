@@ -16,10 +16,20 @@
         <span class="tech-id">[ 05.1 ]</span>
         <h2>OWN DESIGNS</h2>
       </div>
+
       <div class="selector-line"></div>
+
       <div class="selector-option" onclick="showFolder('my-folds')">
         <span class="tech-id">[ 05.2 ]</span>
         <h2>MY FOLDS</h2>
+      </div>
+
+      <div
+        class="selector-return"
+        onclick="window.location.href = 'index.html'"
+      >
+        <span class="tech-id">[ 00 ]</span>
+        <span>RETURN_TO_CENTER</span>
       </div>
     </div>
 
@@ -46,7 +56,6 @@
           </div>
           <div class="node-full-content">
             <div class="content-wrapper">
-              <div class="content-wrapper">
               <img
                 src="img/brownBear.png"
                 class="expanded-img"
@@ -105,62 +114,77 @@
     <!-- Esta es la sección de My folds  -->
 
     <main id="my-folds" class="constellation-container" style="display: none">
-    <nav class="back-nav" onclick="resetSelector()"> [ ← BACK_TO_CATEGORIES ] </nav>
+      <nav class="back-nav" onclick="resetSelector()">
+        [ ← BACK_TO_CATEGORIES ]
+      </nav>
 
-    <section class="origami-node other-fold" style="top: 25%; left: 20%;">
+      <section class="origami-node other-fold" style="top: 25%; left: 20%">
         <div class="node-preview">
-            <input type="checkbox" id="toggle-fold-01" class="node-switch">
-            <label for="toggle-fold-01">
+          <input type="checkbox" id="toggle-fold-01" class="node-switch" />
+          <label for="toggle-fold-01">
+            <!-- edición de imagen -->
+            <img src="img/Jack.jpg" alt="Plegado 1" class="preview-img" />
+          </label>
+          <div class="node-title">
+            <span class="tech-id">INTERPRETATION // REF_F01</span>
+            <h3>NOMBRE_DE_LA_FIGURA_1</h3>
+          </div>
+          <div class="node-full-content">
+            <div class="content-wrapper">
               <!-- edición de imagen -->
-                <img src="img/Jack.jpg" alt="Plegado 1" class="preview-img">
-            </label>
-            <div class="node-title">
-                <span class="tech-id">INTERPRETATION // REF_F01</span>
-                <h3>NOMBRE_DE_LA_FIGURA_1</h3>
+              <img
+                src="img/Jack.jpg"
+                class="expanded-img"
+                alt="Vista ampliada"
+              />
+              <p>
+                esta figura fue diseñada por [nombre del autor]. la plegué
+                usando papel [tipo de papel] y me tomó aproximadamente [tiempo]
+                horas. lo que más me interesó de este modelo fue su estructura
+                de [detalle técnico].
+              </p>
+              <label for="toggle-fold-01" class="close-node">CLOSE [X]</label>
             </div>
-            <div class="node-full-content">
-                <div class="content-wrapper">
-                  <!-- edición de imagen -->
-                    <img src="img/Jack.jpg" class="expanded-img" alt="Vista ampliada">
-                    <p>
-                        esta figura fue diseñada por [nombre del autor]. la plegué usando 
-                        papel [tipo de papel] y me tomó aproximadamente [tiempo] horas. 
-                        lo que más me interesó de este modelo fue su estructura de [detalle técnico].
-                    </p>
-                    <label for="toggle-fold-01" class="close-node">CLOSE [X]</label>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- otra figura -->
+      <!-- otra figura -->
 
-    <section class="origami-node other-fold" style="top: 55%; left: 55%;">
+      <section class="origami-node other-fold" style="top: 55%; left: 55%">
         <div class="node-preview">
-            <input type="checkbox" id="toggle-fold-02" class="node-switch">
-            <label for="toggle-fold-02">
+          <input type="checkbox" id="toggle-fold-02" class="node-switch" />
+          <label for="toggle-fold-02">
+            <!-- edición de imagen -->
+            <img
+              src="img/Azure_Dragon.png"
+              alt="Plegado 2"
+              class="preview-img"
+            />
+          </label>
+          <div class="node-title">
+            <span class="tech-id">INTERPRETATION // REF_F02</span>
+            <h3>NOMBRE_DE_LA_FIGURA_2</h3>
+          </div>
+          <div class="node-full-content">
+            <div class="content-wrapper">
               <!-- edición de imagen -->
-                <img src="img/Azure_Dragon.png" alt="Plegado 2" class="preview-img">
-            </label>
-            <div class="node-title">
-                <span class="tech-id">INTERPRETATION // REF_F02</span>
-                <h3>NOMBRE_DE_LA_FIGURA_2</h3>
+              <img
+                src="img/Azure_Dragon.png"
+                class="expanded-img"
+                alt="Vista ampliada"
+              />
+              <p>
+                una interpretación del diseño de [nombre del autor]. en este
+                caso, decidí usar un color [color] para resaltar las texturas
+                del modelo final.
+              </p>
+              <label for="toggle-fold-02" class="close-node">CLOSE [X]</label>
             </div>
-            <div class="node-full-content">
-                <div class="content-wrapper">
-                  <!-- edición de imagen -->
-                    <img src="img/Azure_Dragon.png" class="expanded-img" alt="Vista ampliada">
-                    <p>
-                        una interpretación del diseño de [nombre del autor]. 
-                        en este caso, decidí usar un color [color] para resaltar 
-                        las texturas del modelo final.
-                    </p>
-                    <label for="toggle-fold-02" class="close-node">CLOSE [X]</label>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-</main>
+      </section>
+    </main>
 
     <script>
       function showFolder(id) {
