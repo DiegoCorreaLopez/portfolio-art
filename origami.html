@@ -3,24 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Origami - Geometric Folding</title>
+    <title>Sugiura | Own Designs</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="constellation-view">
-    <nav class="nav-axis axis-n" onclick="window.location.href = 'index.html'">
-      [ 00 ] RETURN_TO_CENTER
-    </nav>
-
-    <div id="origami-selector" class="selector-overlay">
-      <div class="selector-option" onclick="showFolder('own-designs')">
-        <span class="tech-id">[ 05.1 ]</span>
+  <body class="origami-body">
+    <div id="selector-spatial" class="selector-overlay origami-theme">
+      <div class="selector-option" onclick="openGallery('own')">
+        <span class="tech-id">SUBDIV_05.1</span>
         <h2>OWN DESIGNS</h2>
       </div>
 
       <div class="selector-line"></div>
 
-      <div class="selector-option" onclick="showFolder('my-folds')">
-        <span class="tech-id">[ 05.2 ]</span>
+      <div class="selector-option" onclick="openGallery('folds')">
+        <span class="tech-id">SUBDIV_05.2</span>
         <h2>MY FOLDS</h2>
       </div>
 
@@ -28,173 +24,224 @@
         class="selector-return"
         onclick="window.location.href = 'index.html'"
       >
-        <span class="tech-id">[ 00 ]</span>
-        <span>RETURN_TO_CENTER</span>
+        <span>[ 00 ] RETURN_TO_CENTER</span>
       </div>
     </div>
 
-    <!-- Esta es la sección de Own designs  -->
-
-    <main
-      id="own-designs"
-      class="constellation-container"
-      style="display: none"
-    >
-      <nav class="back-nav" onclick="resetSelector()">
+    <main id="own" class="gallery-container">
+      <nav
+        id="btn-back-own"
+        class="back-nav nav-left"
+        style="display: none"
+        onclick="closeGallery()"
+      >
         [ ← BACK_TO_CATEGORIES ]
       </nav>
 
-      <section class="origami-node" style="top: 20%; left: 15%">
-        <div class="node-preview">
-          <input type="checkbox" id="toggle-own-01" class="node-switch" />
-          <label for="toggle-own-01">
-            <img src="img/brownBear.png" alt="Brown Bear" class="preview-img" />
-          </label>
+      <nav
+        id="btn-return-home"
+        class="back-nav nav-right"
+        style="display: none"
+        onclick="window.location.href = 'index.html'"
+      >
+        [ RETURN_TO_CENTER → ]
+      </nav>
+
+      <!-- imagen oso  -->
+      <div class="origami-node">
+        <input type="checkbox" id="node-own-001" class="node-switch" />
+        <label for="node-own-001" class="node-label">
+          <img
+            src="img/Origami/brownBear.png"
+            alt="Brown Bear"
+            class="preview-img"
+          />
           <div class="node-title">
             <span class="tech-id">ORIGINAL_DESIGN // REF_001</span>
             <h3>BROWN BEAR</h3>
           </div>
-          <div class="node-full-content">
-            <div class="content-wrapper">
-              <img
-                src="img/brownBear.png"
-                class="expanded-img"
-                alt="Vista ampliada"
-              />
-              <p>
-                I always wanted to fold a bear in origami, but by 2024 (the year
-                when I was looking for bear models) I found very few designs
-                with diagrams that I truly liked. Perhaps the best ones I found
-                were the bears by Quentin Trollip; however, I also wanted to
-                achieve something in the style of Nicolás Gajardo and Shuki
-                Kato. At the beginning of 2025, I set out to design my own brown
-                bear, using some of Kamiya's proportions as a guide, especially
-                those he used in his cattle model. I conceived the entire design
-                while traveling in Medellín around mid-April. This is the second
-                version of the design, updated in December 2025. I could retire
-                from the world of origami and feel completely satisfied having
-                my own origami bear.
-              </p>
-              <label for="toggle-own-01" class="close-node">CLOSE [X]</label>
-            </div>
+        </label>
+        <div class="node-full-content">
+          <label for="node-own-001" class="close-node">[ CLOSE_X ]</label>
+          <img
+            src="img/Origami/brownBear.png"
+            alt="Brown Bear Ampliado"
+            class="expanded-img"
+          />
+          <div class="content-wrapper">
+            <p>
+              Un diseño original de un oso pardo, plegado a partir de un
+              cuadrado de papel kraft. Este modelo explora la simplificación de
+              formas animales manteniendo la expresividad. Desarrollado en 2023.
+            </p>
+            <label for="node-own-001" class="close-node-bottom"
+              >[ CLOSE_X ]</label
+            >
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="origami-node" style="top: 50%; left: 45%">
-        <div class="node-preview">
-          <input type="checkbox" id="toggle-own-02" class="node-switch" />
-          <label for="toggle-own-02">
-            <img src="img/Jack.jpg" alt="Nuevo Diseño" class="preview-img" />
-          </label>
+      <!-- Imagen Jack  -->
+
+      <div class="origami-node">
+        <input type="checkbox" id="node-own-002" class="node-switch" />
+        <label for="node-own-002" class="node-label">
+          <img
+            src="img/Origami/Jack.jpg"
+            alt="Jack el Perro"
+            class="preview-img"
+          />
           <div class="node-title">
             <span class="tech-id">ORIGINAL_DESIGN // REF_002</span>
-            <h3>PIEZA DE PRUEBA</h3>
+            <h3>JACK</h3>
           </div>
-          <div class="node-full-content">
-            <div class="content-wrapper">
-              <img
-                src="img/Jack.jpg"
-                class="expanded-img"
-                alt="Vista ampliada"
-              />
-              <p>
-                esta es la segunda pieza de mi catálogo original. sirve para
-                verificar que el sistema de nodos y el selector de categorías
-                funcionan correctamente. aquí puedes describir el proceso
-                creativo de tu nuevo modelo.
-              </p>
-              <label for="toggle-own-02" class="close-node">CLOSE [X]</label>
-            </div>
+        </label>
+        <div class="node-full-content">
+          <label for="node-own-002" class="close-node">[ CLOSE_X ]</label>
+          <img
+            src="img/Origami/Jack.jpg"
+            alt="Jack Ampliado"
+            class="expanded-img"
+          />
+          <div class="content-wrapper">
+            <p>
+              Jack es un diseño de perro terrier, caracterizado por sus orejas
+              puntiagudas y su postura alerta. Plegado con papel washi. Un
+              desafío en la representación de la vitalidad animal a través del
+              origami. Creado en 2024.
+            </p>
+            <label for="node-own-002" class="close-node-bottom"
+              >[ CLOSE_X ]</label
+            >
           </div>
         </div>
-      </section>
+      </div>
     </main>
 
-    <!-- Esta es la sección de My folds  -->
+    <!-- MY FOLDS  -->
 
-    <main id="my-folds" class="constellation-container" style="display: none">
-      <nav class="back-nav" onclick="resetSelector()">
+    <main
+      id="folds"
+      class="gallery-container book-layout"
+      style="display: none"
+    >
+      <nav class="back-nav nav-left" onclick="closeGallery()">
         [ ← BACK_TO_CATEGORIES ]
       </nav>
+      <nav
+        class="back-nav nav-right"
+        onclick="window.location.href = 'index.html'"
+      >
+        [ RETURN_TO_CENTER → ]
+      </nav>
 
-      <section class="origami-node other-fold" style="top: 25%; left: 20%">
-        <div class="node-preview">
-          <input type="checkbox" id="toggle-fold-01" class="node-switch" />
-          <label for="toggle-fold-01">
-            <!-- edición de imagen -->
-            <img src="img/Jack.jpg" alt="Plegado 1" class="preview-img" />
-          </label>
-          <div class="node-title">
-            <span class="tech-id">INTERPRETATION // REF_F01</span>
-            <h3>NOMBRE_DE_LA_FIGURA_1</h3>
-          </div>
-          <div class="node-full-content">
-            <div class="content-wrapper">
-              <!-- edición de imagen -->
-              <img
-                src="img/Jack.jpg"
-                class="expanded-img"
-                alt="Vista ampliada"
-              />
-              <p>
-                esta figura fue diseñada por [nombre del autor]. la plegué
-                usando papel [tipo de papel] y me tomó aproximadamente [tiempo]
-                horas. lo que más me interesó de este modelo fue su estructura
-                de [detalle técnico].
-              </p>
-              <label for="toggle-fold-01" class="close-node">CLOSE [X]</label>
+      <section class="time-range-block">
+        <header class="range-header">
+          <span class="tech-id">TIMELINE_REF // 2025.A</span>
+          <h2>ENERO — JULIO 2025</h2>
+        </header>
+
+        <!-- Azure dragon  -->
+        <div class="book-container">
+          <div class="book-wrapper" id="book-2025A">
+            <div class="book-page active">
+              <img src="img/Origami/Azure_Dragon.png" alt="Plegado 1" />
+              <div class="page-info">
+                <span class="page-num">01/04</span>
+                <p>
+                  Descripción técnica del plegado o nombre del autor original.
+                </p>
+              </div>
+            </div>
+
+            <!-- Riding horse -->
+
+            <div class="book-page">
+              <img src="img/Origami/Riding_horse.png" alt="Plegado 2" />
+              <div class="page-info">
+                <span class="page-num">02/04</span>
+                <p>Detalles del papel utilizado y técnica aplicada.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- otra figura -->
-
-      <section class="origami-node other-fold" style="top: 55%; left: 55%">
-        <div class="node-preview">
-          <input type="checkbox" id="toggle-fold-02" class="node-switch" />
-          <label for="toggle-fold-02">
-            <!-- edición de imagen -->
-            <img
-              src="img/Azure_Dragon.png"
-              alt="Plegado 2"
-              class="preview-img"
-            />
-          </label>
-          <div class="node-title">
-            <span class="tech-id">INTERPRETATION // REF_F02</span>
-            <h3>NOMBRE_DE_LA_FIGURA_2</h3>
-          </div>
-          <div class="node-full-content">
-            <div class="content-wrapper">
-              <!-- edición de imagen -->
-              <img
-                src="img/Azure_Dragon.png"
-                class="expanded-img"
-                alt="Vista ampliada"
-              />
-              <p>
-                una interpretación del diseño de [nombre del autor]. en este
-                caso, decidí usar un color [color] para resaltar las texturas
-                del modelo final.
-              </p>
-              <label for="toggle-fold-02" class="close-node">CLOSE [X]</label>
-            </div>
+          <div class="book-controls">
+            <button onclick="prevPage('book-2025A')">[ PREV_PAGE ]</button>
+            <div class="book-divider"></div>
+            <button onclick="nextPage('book-2025A')">[ NEXT_PAGE ]</button>
           </div>
         </div>
       </section>
     </main>
 
     <script>
-      function showFolder(id) {
-        document.getElementById("origami-selector").style.display = "none";
-        document.getElementById(id).style.display = "block";
+      function openGallery(id) {
+        // 1. Ocultar el selector principal de categorías
+        document.getElementById("selector-spatial").style.display = "none";
+
+        // 2. Ocultar todas las galerías primero para limpiar la vista
+        document.getElementById("own").style.display = "none";
+        document.getElementById("folds").style.display = "none";
+
+        // 3. Mostrar la galería que el usuario eligió
+        const targetGallery = document.getElementById(id);
+        targetGallery.style.display = "flex";
+
+        // 4. Mostrar los dos botones de navegación superior (Back y Return)
+        document.getElementById("btn-back-own").style.display = "block";
+        document.getElementById("btn-return-home").style.display = "block";
+
+        // 5. Cambiar el fondo del body y el título de la pestaña según la categoría
+        if (id === "own") {
+          document.body.className = "origami-body own-designs-active";
+          document.title = "Sugiura | Own Designs";
+        } else if (id === "folds") {
+          document.body.className = "origami-body my-folds-active";
+          document.title = "Sugiura | My Folds";
+        }
       }
-      function resetSelector() {
-        document.getElementById("own-designs").style.display = "none";
-        document.getElementById("my-folds").style.display = "none";
-        document.getElementById("origami-selector").style.display = "flex";
+
+      function closeGallery() {
+        // 1. Mostrar de nuevo el selector principal
+        document.getElementById("selector-spatial").style.display = "flex";
+
+        // 2. Ocultar las galerías
+        document.getElementById("own").style.display = "none";
+        document.getElementById("folds").style.display = "none";
+
+        // 3. Ocultar los dos botones de navegación superior
+        document.getElementById("btn-back-own").style.display = "none";
+        document.getElementById("btn-return-home").style.display = "none";
+
+        // 4. Restaurar el fondo original y el título
+        document.body.className = "origami-body";
+        document.title = "Sugiura | Origami Archive";
+      }
+
+      function nextPage(bookId) {
+        const book = document.getElementById(bookId);
+        const pages = book.querySelectorAll(".book-page");
+        let activeIndex = Array.from(pages).findIndex((p) =>
+          p.classList.contains("active"),
+        );
+
+        if (activeIndex < pages.length - 1) {
+          pages[activeIndex].classList.remove("active");
+          pages[activeIndex + 1].classList.add("active");
+        }
+      }
+
+      function prevPage(bookId) {
+        const book = document.getElementById(bookId);
+        const pages = book.querySelectorAll(".book-page");
+        let activeIndex = Array.from(pages).findIndex((p) =>
+          p.classList.contains("active"),
+        );
+
+        if (activeIndex > 0) {
+          pages[activeIndex].classList.remove("active");
+          pages[activeIndex - 1].classList.add("active");
+        }
       }
     </script>
   </body>
