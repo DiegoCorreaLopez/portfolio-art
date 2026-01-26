@@ -705,3 +705,122 @@ h1 {
   color: #e0e0e0;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
+
+/* --- ESTÉTICA VISUAL AXIS (FOTOGRAFÍA) --- */
+/* ============================================================
+/* ============================================================
+   SECCIÓN: VISUAL_AXIS (FOTOGRAFÍA) - Mosaico Compacto
+   ============================================================ */
+
+.va-photography-body {
+  background-color: #000 !important;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+    url("img/backgrounds/photography.png") !important;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  overflow-y: auto !important;
+}
+
+.va-page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.va-project-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.va-meta {
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: #444;
+}
+.va-project-title {
+  font-size: 24px;
+  letter-spacing: 12px;
+  font-weight: 100;
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* REJILLA ESTILO "CONTACT SHEET" */
+.va-mosaic-container {
+  display: grid;
+  /* Celdas pequeñas para que quepan muchas en una fila */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+
+.va-photo-item {
+  position: relative;
+  aspect-ratio: 3 / 4; /* Proporción Fujifilm */
+  background-image: var(--va-img);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  filter: grayscale(100%) brightness(0.6);
+  cursor: crosshair;
+  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* AMPLIACIÓN DINÁMICA */
+.va-photo-item:hover {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.8); /* Ampliación potente al pasar el cursor */
+  z-index: 100; /* Se pone por encima de todas las demás */
+  border-color: #fff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+}
+
+.va-shutter-overlay {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: monospace;
+}
+
+.va-nav-back {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #aaa;
+  cursor: pointer;
+  z-index: 500;
+  transition: color 0.3s;
+  color: #aaa;
+  background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+  padding: 10px 15px;
+  backdrop-filter: blur(
+    5px
+  ); /* Desenfoca lo que hay detrás para que el texto resalte */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Marco técnico fino */
+}
+
+.va-nav-back:hover {
+  color: #fff;
+}
+
+.va-terminal-footer {
+  margin-top: 80px;
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 4px;
+  background: #000; /* Fondo negro sólido para separar de las fotos */
+  width: 100vw; /* Que ocupe todo el ancho */
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
