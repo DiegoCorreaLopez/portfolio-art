@@ -706,8 +706,6 @@ h1 {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-/* --- ESTÉTICA VISUAL AXIS (FOTOGRAFÍA) --- */
-/* ============================================================
 /* ============================================================
    SECCIÓN: VISUAL_AXIS (FOTOGRAFÍA) - Mosaico Compacto
    ============================================================ */
@@ -827,8 +825,30 @@ h1 {
 
 .va-project-group {
   width: 100%;
-  margin-bottom: 150px; /* Espacio generoso entre libros */
+  margin-bottom: 10px; /* Espacio generoso entre libros */
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* --- VA: SEPARADOR DE ÁLBUMES --- */
+
+.va-project-group:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Línea muy tenue al final */
+  padding-bottom: 5px;
+  margin-bottom: 60px; /* Espacio generoso de 'respiro' */
+  position: relative;
+}
+
+/* Un indicador técnico de 'Fin de Volumen' */
+.va-project-group:not(:last-child)::after {
+  content: "END_OF_VOLUME_01 // PROCEED_TO_NEXT_LOG";
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: #333;
+  letter-spacing: 5px;
+  font-family: monospace;
 }
